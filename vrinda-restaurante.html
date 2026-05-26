@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vrinda · Cocina Vegetariana · Rosario</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sage:#6B7F5E;
+  --sage-light:#A8BC97;
+  --sage-pale:#E8EFE3;
+  --earth:#3D3325;
+  --earth-mid:#6B5B47;
+  --cream:#F7F4EE;
+  --warm-white:#FDFBF7;
+  --accent:#8B6F3E;
+  --border:rgba(107,127,94,0.2);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--earth);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2.5rem;
+  background:rgba(253,251,247,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:0.08em;color:var(--sage)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--earth-mid);transition:color 0.2s;font-weight:400}
+.nav-links a:hover{color:var(--sage)}
+.nav-cta{background:var(--sage);color:#fff;padding:0.5rem 1.3rem;border-radius:40px;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;transition:background 0.2s}
+.nav-cta:hover{background:var(--sage-light);color:var(--earth)}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;background:var(--earth);position:relative;overflow:hidden}
+.hero-circles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-circles::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(107,127,94,0.12);top:-100px;right:-150px}
+.hero-circles::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(168,188,151,0.08);bottom:-80px;left:-100px}
+.hero-leaf{position:absolute;font-size:18rem;opacity:0.04;top:50%;left:50%;transform:translate(-50%,-50%);user-select:none;pointer-events:none;line-height:1}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(107,127,94,0.2);border:1px solid rgba(168,188,151,0.3);color:var(--sage-light);padding:0.4rem 1rem;border-radius:40px;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp 0.8s ease both}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,11vw,9rem);font-weight:400;font-style:italic;color:var(--cream);line-height:0.9;margin-bottom:0.3em;animation:fadeUp 0.8s 0.1s ease both}
+.hero-sub{font-size:0.75rem;color:rgba(232,239,227,0.45);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:2.5rem;animation:fadeUp 0.8s 0.2s ease both}
+.hero-desc{max-width:380px;font-size:1rem;line-height:1.8;color:rgba(232,239,227,0.6);margin:0 auto 3rem;font-weight:300;animation:fadeUp 0.8s 0.3s ease both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s 0.4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.btn-green{background:var(--sage);color:#fff;padding:0.9rem 2.2rem;border-radius:40px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:all 0.2s;display:inline-block}
+.btn-green:hover{background:var(--sage-light);color:var(--earth);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(168,188,151,0.4);color:var(--sage-light);padding:0.9rem 2.2rem;border-radius:40px;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:all 0.2s;display:inline-block}
+.btn-ghost:hover{border-color:var(--sage-light);color:var(--cream)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(232,239,227,0.2);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,rgba(168,188,151,0.6),transparent);animation:scrollAnim 2s ease-in-out infinite}
+@keyframes scrollAnim{0%,100%{opacity:0.4;transform:scaleY(0.8)}50%{opacity:1;transform:scaleY(1.1) translateY(4px)}}
+
+.stats-bar{background:var(--sage-pale);display:flex;justify-content:center;border-bottom:1px solid var(--border)}
+.stat-item{flex:1;max-width:220px;padding:1.3rem 1rem;text-align:center;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--sage);line-height:1}
+.stat-label{font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--earth-mid);margin-top:4px;font-weight:400}
+
+section{padding:5.5rem 2rem}
+.section-label{font-size:0.66rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--sage);margin-bottom:0.9rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:400;line-height:1.08}
+.section-title em{font-style:italic;color:var(--sage)}
+.container{max-width:1080px;margin:0 auto}
+
+.destacados{background:var(--warm-white)}
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:3.2rem}
+.dest-card{padding:2.2rem 1.8rem;border:1px solid var(--border);border-radius:16px;background:var(--cream);transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s}
+.dest-card:hover{border-color:var(--sage-light);transform:translateY(-4px);box-shadow:0 12px 40px rgba(107,127,94,0.1)}
+.dest-icon{font-size:2.4rem;margin-bottom:1.1rem}
+.dest-title{font-weight:500;font-size:1rem;margin-bottom:0.5rem;color:var(--earth)}
+.dest-text{font-size:0.87rem;color:var(--earth-mid);line-height:1.7;font-weight:300}
+
+.menu-section{background:var(--sage-pale)}
+.menu-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3.5rem}
+.menu-items{display:flex;flex-direction:column;gap:0}
+.menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid var(--border);gap:1rem}
+.menu-item:last-child{border-bottom:none}
+.menu-name{font-weight:500;font-size:0.95rem;color:var(--earth)}
+.menu-desc{font-size:0.8rem;color:var(--earth-mid);margin-top:3px;font-weight:300;line-height:1.5}
+.menu-tag{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(107,127,94,0.12);color:var(--sage);padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.menu-cta-block{display:flex;flex-direction:column;gap:1.5rem}
+.menu-cta-block p{font-size:0.95rem;color:var(--earth-mid);line-height:1.7;font-weight:300}
+
+.horarios{background:var(--earth)}
+.horarios-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3.5rem}
+.schedule{display:flex;flex-direction:column}
+.sched-row{display:flex;justify-content:space-between;align-items:center;padding:0.9rem 0;border-bottom:1px solid rgba(232,239,227,0.07);font-size:0.9rem}
+.sched-day{color:rgba(247,244,238,0.45)}
+.sched-time{color:var(--sage-light);font-weight:400;font-size:0.85rem}
+.sched-closed{color:rgba(247,244,238,0.2);font-size:0.8rem;font-style:italic}
+.sched-row.today .sched-day{color:var(--cream);font-weight:500}
+.today-badge{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(107,127,94,0.2);color:var(--sage-light);padding:2px 7px;border-radius:20px;margin-left:8px}
+.contact-block{display:flex;flex-direction:column;gap:2rem;padding-top:0.3rem}
+.contact-item{display:flex;flex-direction:column;gap:5px}
+.contact-label{font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(247,244,238,0.3)}
+.contact-val{font-size:1rem;color:var(--cream);line-height:1.5;font-weight:300}
+.contact-val a{color:var(--sage-light);transition:opacity 0.2s}
+.contact-val a:hover{opacity:0.7}
+
+.mapa{background:var(--cream)}
+.map-wrap{margin-top:2.8rem;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.map-wrap iframe{width:100%;height:400px;border:none;display:block}
+
+.reviews{background:var(--warm-white)}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3rem}
+.review-card{padding:2rem;border:1px solid var(--border);border-radius:16px;background:var(--cream);transition:border-color 0.2s,transform 0.2s}
+.review-card:hover{border-color:var(--sage-light);transform:translateY(-3px)}
+.review-stars{color:var(--sage);font-size:0.85rem;letter-spacing:3px;margin-bottom:1rem}
+.review-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--earth);line-height:1.65;font-style:italic;margin-bottom:1.2rem}
+.review-author{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--earth-mid);font-weight:400}
+
+.final-cta{background:var(--sage);text-align:center;padding:6rem 2rem;position:relative;overflow:hidden}
+.final-cta::before{content:'🌱';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:20rem;opacity:0.06;pointer-events:none;line-height:1}
+.final-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:400;font-style:italic;color:#fff;margin-bottom:1rem;position:relative}
+.final-cta p{color:rgba(255,255,255,0.7);margin-bottom:2.5rem;font-size:1rem;position:relative;font-weight:300}
+.btn-white{display:inline-block;background:#fff;color:var(--sage);padding:1rem 2.5rem;border-radius:40px;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.2s;position:relative}
+.btn-white:hover{background:var(--cream);transform:translateY(-2px)}
+
+footer{background:var(--earth);padding:3rem 2rem;text-align:center}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;font-style:italic;color:var(--sage-light);margin-bottom:1rem}
+.footer-info{color:rgba(247,244,238,0.3);font-size:0.78rem;line-height:2.2;font-weight:300}
+.footer-info a{color:rgba(168,188,151,0.6);transition:color 0.2s}
+.footer-info a:hover{color:var(--sage-light)}
+.footer-sep{margin:0 0.6rem;opacity:0.3}
+
+@media(max-width:760px){
+  .nav-links{display:none}
+  nav{padding:0.9rem 1.2rem}
+  .horarios-inner,.menu-inner{grid-template-columns:1fr;gap:2.5rem}
+  .stat-num{font-size:1.5rem}
+  section{padding:4rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Vrinda</div>
+  <div class="nav-links">
+    <a href="#destacados">Nosotros</a>
+    <a href="#menu">Menú</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#mapa">Ubicación</a>
+    <a href="#opiniones">Opiniones</a>
+  </div>
+  <a class="nav-cta" href="tel:+5403417063979">Reservar</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-circles"></div>
+  <div class="hero-leaf">🌿</div>
+  <div class="hero-badge">🌱 Cocina vegetariana & café de especialidad</div>
+  <h1>Vrinda</h1>
+  <div class="hero-sub">Restaurante · Rosario</div>
+  <p class="hero-desc">Comida vegetariana con alma. Desde el desayuno hasta la cena, ingredientes frescos y sabores que sorprenden.</p>
+  <div class="hero-btns">
+    <a class="btn-green" href="#menu">Ver el menú</a>
+    <a class="btn-ghost" href="#mapa">Cómo llegar</a>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>scroll</div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">4.3★</div><div class="stat-label">Google Maps</div></div>
+  <div class="stat-item"><div class="stat-num">1995</div><div class="stat-label">Opiniones</div></div>
+  <div class="stat-item"><div class="stat-num">50.7K</div><div class="stat-label">Seguidores IG</div></div>
+  <div class="stat-item"><div class="stat-num">9:30am</div><div class="stat-label">Abrimos cada día</div></div>
+</div>
+
+<section class="destacados" id="destacados">
+  <div class="container">
+    <div class="section-label">Por qué elegirnos</div>
+    <div class="section-title">Cocina con <em>propósito</em></div>
+    <div class="dest-grid">
+      <div class="dest-card"><div class="dest-icon">🥗</div><div class="dest-title">100% vegetariano & vegano</div><div class="dest-text">Carta pensada para herbívoros y omnívoros por igual. Tabla vegana, hamburguesas, tartas, ensaladas y mucho más.</div></div>
+      <div class="dest-card"><div class="dest-icon">☕</div><div class="dest-title">Café de especialidad</div><div class="dest-text">Granos seleccionados, preparación cuidadosa. El café ideal para empezar el día o acompañar la tarde.</div></div>
+      <div class="dest-card"><div class="dest-icon">🍰</div><div class="dest-title">Postres artesanales</div><div class="dest-text">Tiramisú, pastel de queso, budines y tortas que se destacan en cada reseña. El mejor cierre de comida.</div></div>
+      <div class="dest-card"><div class="dest-icon">🍷</div><div class="dest-title">Vinos orgánicos veganos</div><div class="dest-text">Selección de vinos orgánicos de primera clase, pensados para acompañar cada plato.</div></div>
+      <div class="dest-card"><div class="dest-icon">🌿</div><div class="dest-title">Ambiente relajado</div><div class="dest-text">Un espacio cálido y cuidado en el corazón de Rosario. Ideal para ir solo, en pareja o con amigos.</div></div>
+      <div class="dest-card"><div class="dest-icon">🛵</div><div class="dest-title">Delivery & take away</div><div class="dest-text">Pedí desde casa o pasá a buscar tu pedido. También podés consumir en el salón.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="menu-inner">
+      <div class="menu-items">
+        <div class="section-label">Lo más pedido</div>
+        <div class="section-title" style="margin-bottom:2rem">Platos <em>destacados</em></div>
+        <div class="menu-item"><div><div class="menu-name">Tabla vegana</div><div class="menu-desc">Selección variada de opciones veganas de temporada</div></div><span class="menu-tag">Vegano</span></div>
+        <div class="menu-item"><div><div class="menu-name">Hamburguesa Vrinda</div><div class="menu-desc">La favorita de la casa, con ingredientes frescos</div></div><span class="menu-tag">Popular</span></div>
+        <div class="menu-item"><div><div class="menu-name">Tarta del mediodía</div><div class="menu-desc">Porción abundante con ensalada y papas</div></div><span class="menu-tag">Almuerzo</span></div>
+        <div class="menu-item"><div><div class="menu-name">Quinua rellena</div><div class="menu-desc">Morrón relleno con quinua, ensalada y puré de batata</div></div><span class="menu-tag">Vegano</span></div>
+        <div class="menu-item"><div><div class="menu-name">Tiramisú</div><div class="menu-desc">Postre clásico con toque vegetal artesanal</div></div><span class="menu-tag">Postre</span></div>
+      </div>
+      <div class="menu-cta-block">
+        <div class="section-label">Menú completo</div>
+        <div class="section-title">Mucho más <em>para descubrir</em></div>
+        <p>Desayunos, almuerzos, cenas, jugos, smoothies, chocolates y postres. Una carta pensada para cada momento del día.</p>
+        <a class="btn-green" href="https://www.facebook.com/vrinda" target="_blank">Ver menú completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="horarios" id="horarios">
+  <div class="container">
+    <div class="section-label" style="color:var(--sage-light)">Atención</div>
+    <div class="section-title" style="color:var(--cream)">Horarios &<br><em style="color:var(--sage-light)">contacto</em></div>
+    <div class="horarios-inner">
+      <div class="schedule">
+        <div class="sched-row"><span class="sched-day">Lunes</span><span class="sched-time">9:30 – 23:30</span></div>
+        <div class="sched-row today"><span class="sched-day">Martes <span class="today-badge">hoy</span></span><span class="sched-closed">Cerrado</span></div>
+        <div class="sched-row"><span class="sched-day">Miércoles</span><span class="sched-time">9:30 – 23:30</span></div>
+        <div class="sched-row"><span class="sched-day">Jueves</span><span class="sched-time">9:30 – 23:30</span></div>
+        <div class="sched-row"><span class="sched-day">Viernes</span><span class="sched-time">9:30 – 23:30</span></div>
+        <div class="sched-row"><span class="sched-day">Sábado</span><span class="sched-time">9:30 – 23:30</span></div>
+        <div class="sched-row"><span class="sched-day">Domingo</span><span class="sched-closed">Cerrado</span></div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-item"><div class="contact-label">Dirección</div><div class="contact-val">Salta 1506<br>Rosario, Santa Fe, Argentina</div></div>
+        <div class="contact-item"><div class="contact-label">Teléfono / WhatsApp</div><div class="contact-val"><a href="tel:+5403417063979">(0341) 706-3979</a></div></div>
+        <div class="contact-item"><div class="contact-label">Instagram</div><div class="contact-val"><a href="https://instagram.com/vrindarosario" target="_blank">@vrindarosario</a></div></div>
+        <div class="contact-item"><div class="contact-label">Facebook</div><div class="contact-val"><a href="https://facebook.com/vrinda" target="_blank">facebook.com/vrinda</a></div></div>
+        <a class="btn-green" href="tel:+5403417063979" style="margin-top:0.5rem;text-align:center">Llamar para reservar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mapa" id="mapa">
+  <div class="container">
+    <div class="section-label">Cómo llegar</div>
+    <div class="section-title">Encontranos en <em>Rosario</em></div>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.0!2d-60.6421383!3d-32.9383286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b2ab7364376323!2sRestaurante+Vrinda!5e0!3m2!1ses-419!2sar!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="opiniones">
+  <div class="container">
+    <div class="section-label">Google Maps · 4.3 ★ · 1995 opiniones</div>
+    <div class="section-title">Lo que dice <em>la gente</em></div>
+    <div class="reviews-grid">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Pedimos la tabla vegana y estaba exquisita, variada y rica."</p><div class="review-author">Cliente verificado · Google</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"This is the best restaurant in Rosario. Best food & service around."</p><div class="review-author">Cliente verificado · Google</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"La tarta que venden al mediodía es muy abundante, viene con ensalada y papas."</p><div class="review-author">Cliente verificado · Google</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <h2>Vení a comer algo rico</h2>
+  <p>De lunes a sábado de 9:30 a 23:30 · Salta 1506, Rosario</p>
+  <a class="btn-white" href="tel:+5403417063979">Reservar una mesa</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Vrinda</div>
+  <div class="footer-info">
+    Salta 1506, Rosario, Santa Fe
+    <span class="footer-sep">·</span>
+    <a href="tel:+5403417063979">(0341) 706-3979</a>
+    <span class="footer-sep">·</span>
+    <a href="https://instagram.com/vrindarosario" target="_blank">@vrindarosario</a>
+    <br>
+    Lun a Sáb: 9:30 – 23:30 · Cerrado Mar y Dom
+    <br><br>
+    <span style="font-size:0.7rem;opacity:0.4">© 2025 Restaurante Vrinda · Todos los derechos reservados</span>
+  </div>
+</footer>
+
+</body>
+</html>
